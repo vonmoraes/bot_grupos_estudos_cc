@@ -71,7 +71,7 @@ def help(update, context):
 
     context.bot.send_message(chat_id = update.message.chat_id,
     text = text_help,
-    parse_mode = telegram.ParseMode.MARLDOWN,
+    parse_mode = telegram.ParseMode.MARKDOWN,
     disable_web_page_preview = True)
 pass
 
