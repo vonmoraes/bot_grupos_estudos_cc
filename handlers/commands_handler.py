@@ -36,9 +36,9 @@ group_list():
 def group_list(update, context):
 
     text_grupos_estudos = ("Lista de grupos de estudos:\n"
-        '<a href="https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg"> Álgebra Linear (AL) </a>\n'
+    '<a href="https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg"> Álgebra Linear (AL) </a>\n'
 	'<a href="https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q"> Cálculo III </a>\n'
-        '<a href="https://t.me/joinchat/CIoz-hRPWS_bAOXEptVP5Q"> Computação Gráfica (CG) </a>\n'
+    '<a href="https://t.me/joinchat/CIoz-hRPWS_bAOXEptVP5Q"> Computação Gráfica (CG) </a>\n'
 	'<a href="https://t.me/joinchat/DbdJcA_gOi5p4oYYkOCbvw"> Redes de Computadores II (REDES-II) </a>\n'
 	'<a href="https://t.me/joinchat/CIoz-lfkQXIwBPcwoee3-g"> Processamento de Imagens Digitais (PID) </a>\n'
 	'<a href="https://t.me/joinchat/CIoz-hZQxMd1JzjfZjRRLg"> Tópicos I/III </a>\n'
@@ -66,7 +66,7 @@ help():
     Retorna uma mensagem contendo informações sobre o bot.
     comando :: /help
 """
-def help(update, context):
+def ajuda(update, context):
     text_help = 'Informações sobre o bot em [github](https://github.com/vonmoraes/bot_grupos_estudos_cc).'
 
     context.bot.send_message(chat_id = update.message.chat_id,

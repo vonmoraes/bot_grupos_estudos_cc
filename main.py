@@ -76,7 +76,7 @@ def fill_command_handler():
     group_list_handler = CommandHandler('group_list', group_list)
     dispatcher.add_handler(group_list_handler)
     # /help
-    help_handler = CommandHandler('help', help)
+    help_handler = CommandHandler('help', ajuda)
     dispatcher.add_handler(help_handler)
 
     """
