@@ -46,13 +46,13 @@ def group_list(update, context):
 	'<a href="https://t.me/joinchat/HQIiXRFuRCYdoIetfodKSw"> Tópicos Virtual </a>\n'
 	'<a href="https://t.me/joinchat/HQIiXUUFqPzt2wOysBd_Sg"> TCC 1 </a>\n'
 	'<a href="https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ"> Compiladores </a>\n'
-	'<a href="https://t.me/joinchat/DbdJcFcFdfyNw7vVu0OhPw"> Inteligência Artificial (IA) </a>\n'
+	'<a href="https://t.me/joinchat/IEr6PFcFdfzlT_sw0s8nEw"> Inteligência Artificial (IA) </a>\n'
 	'<a href="https://t.me/joinchat/DbdJcEr1znS4BDvc7K1WVA"> Otimização de Sistemas (OS) </a>\n'
 	'<a href="https://t.me/joinchat/DbdJcBe5D184bGlDR-nyGw"> Lab. de Redes e S.O </a>\n'
                           )
     text_grupos_geral = ("Lista de outros grupos: \n"
         '<a href="https://t.me/joinchat/HQIiXUhoU9S_3U9L-K6T_Q"> Grupo de estudos </a>\n'
-        '<a href="https://t.me/joinchat/HQIiXUSXH6Ysldd07yCzRA"> Jogo do Lobinho </a> Venha se matar com a gente !\n'
+        '<a href="https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA"> Jogo do Lobinho </a> Venha se matar com a gente !\n'
         )
         
     context.bot.send_message(chat_id = update.message.chat_id,
