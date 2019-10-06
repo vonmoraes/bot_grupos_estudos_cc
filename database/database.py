@@ -24,6 +24,7 @@ def criar_banco():
         cursor.execute("""
         CREATE TABLE grupos (
         id_grupo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        chat_id TEXT NOT NULL,
         nome_grupo TEXT NOT NULL,
         link_grupo TEXT NOT NULL
         );
@@ -41,7 +42,7 @@ def adicionar_grupo(novo_grupo):
     cursor.execute("""
     INSERT INTO grupos (nome_grupo, link_grupo)
     VALUES (?,?);
-    """, (novo_grupo.nome_grupo, novo_grupo.link_grupo))
+    """, (novo_grupo.chat_id, novo_grupo.nome_grupo))
     # atualizar & fechar banco
     conn.commit()
     conn.close()

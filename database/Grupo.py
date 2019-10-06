@@ -7,9 +7,10 @@ class Grupo:
 """
 class Grupo:
     #
-    def __init__(self, nome_grupo, link_grupo):
+    def __init__(self, nome_grupo, chat_id, tipo='m'):
         self.nome_grupo = nome_grupo
-        self.link_grupo = link_grupo
+        self.chat_id = chat_id
+        self.tipo = tipo
     pass
     #
     def __repr__(self):
