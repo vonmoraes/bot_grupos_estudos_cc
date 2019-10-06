@@ -144,24 +144,36 @@ pass
 
 
 def update(update, context):
-    _, nome, tipo = update.message.text.split()
-    chatid = update.message.chat_id
 
-    tipo.lower()
+    pattern = '(".+")'
+    name = re.search(pattern, update.message.text)
+    if name:
+        nome = name.group(1)
+        _, tipo = update.message.text.split(nome)
+        chatid = update.message.chat_id
 
-    grupo = grupo.Grupo(nome, chatid, tipo)
-    database.adicionar_grupo(grupo)
-    try:
-        link = context.bot.export_chat_invite_link(chat_id=chatid) 
-        mensagem = 'Grupo <a href="{}"> {} </a> adicionado com sucesso.'.format(link, nome)
+        tipo = tipo.lower().strip()
+
+        grupo = grupo.Grupo(nome, chatid, tipo)
+        database.adicionar_grupo(grupo)
+        try:
+            link = context.bot.export_chat_invite_link(chat_id=chatid) 
+            mensagem = 'Grupo <a href="{}"> {} </a> adicionado com sucesso.'.format(link, nome)
+            context.bot.send_message(chat_id=chatid, 
+                                text=mensagem,
+                                parse_mode=telegram.ParseMode.HTML,
+                                disable_web_page_preview=True)
+        except Exception as exp:
+            context.bot.send_message(chat_id=chatid, 
+                                text="Um erro ocorreu, tente novamente mais tarde.",
+                                parse_mode=telegram.ParseMode.HTML,
+                                disable_web_page_preview=True)
+            print(exp)
+    else:
         context.bot.send_message(chat_id=chatid, 
-                             text=mensagem,
+                             text="Insira o nome do grupo entre \", por favor",
                              parse_mode=telegram.ParseMode.HTML,
                              disable_web_page_preview=True)
-    except Exception as exp:
-        context.bot.send_message(chat_id=chatid, 
-                             text="Um erro ocorreu, tente novamente mais tarde.",
-                             parse_mode=telegram.ParseMode.HTML,
-                             disable_web_page_preview=True)
-        print(exp)
+
+    
 pass
