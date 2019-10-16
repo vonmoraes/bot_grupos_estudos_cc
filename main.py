@@ -87,15 +87,6 @@ def fill_command_handler():
     dispatcher.add_handler(add_group_handler)
     # /delete_group
     # /edit_group
-
-    """
-    # Em teste
-    """
-    update_handler = CommandHandler('update', update)
-    dispatcher.add_handler(update_handler)
-    new_group_list_handler = CommandHandler('new_group_list', new_group_list)
-    dispatcher.add_handler(new_group_list_handler)
-
 pass
 
 ####################
