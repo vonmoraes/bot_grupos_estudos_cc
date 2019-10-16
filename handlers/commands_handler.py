@@ -8,10 +8,19 @@ https://core.telegram.org/bots/api#html-style
 import telegram
 from telegram.ext import *
 from handlers.outros_handler import *
-
+from database import database, Grupo
 ####################
 # comandos
 ####################
+
+
+TEMPLATE_GROUP_LIST = """
+Lista de grupos de estudos:
+{}
+Lista de outros grupos:
+{}
+"""
+
 
 """
 start():
@@ -19,6 +28,7 @@ start():
     comando :: /start
 """
 def start(update, context):
+    update.message.chat_id
     context.bot.send_message(chat_id = update.message.chat_id,
         text = 'Sou um bot, por favor converse comigo! ;)')
 pass
@@ -56,10 +66,27 @@ def group_list(update, context):
         )
         
     context.bot.send_message(chat_id = update.message.chat_id,
-        text = text_grupos_estudos + text_grupos_geral,
-        parse_mode = telegram.ParseMode.HTML,
-        disable_web_page_preview=True)
+                             text = text_grupos_estudos + text_grupos_geral,
+                             parse_mode = telegram.ParseMode.HTML,
+                             disable_web_page_preview=True)
 pass
+
+def new_group_list(update, context):
+    formato_link = '<a href="{}"> {} </a>'
+    grupos = database.ler_grupos()
+    for g in grupos:
+        g['link'] = context.bot.export_chat_invite_link(chat_id=chatid)
+    estudos = [formato_link.format(g['link'], g['nome']) for g in grupos if g['tipo'].lower() == 'm']
+    trollagem = [formato_link.format(g['link'], g['nome']) for g in grupos if g['tipo'].lower() == 't']
+
+    mensagem = TEMPLATE_GROUP_LIST.format('\n'.join(estudos), '\n'.join(trollagem))
+
+    context.bot.send_message(chat_id = update.message.chat_id,
+                             text = mensagem,
+                             parse_mode = telegram.ParseMode.HTML,
+                             disable_web_page_preview=True)
+
+
 
 """
 help():
@@ -94,8 +121,7 @@ def add_group(update, context):
     if: grupo ou supergrupo
     else: privado
     """
-    if (update.message.chat.type == 'group' 
-    or update.message.chat.type == 'supergroup'):
+    if (update.message.chat.type == 'group' or update.message.chat.type == 'supergroup'):
         mensagem = "Olá, {} te mandei uma mensagem no privado com instruções ;)".format(referencia_usuario)
         # Mandar mensagem de instrução no privado
         context.bot.send_message(chat_id = chat_usuario,
@@ -114,4 +140,40 @@ def add_group(update, context):
         parse_mode = telegram.ParseMode.HTML,
         disable_web_page_preview = True
     )
+pass
+
+
+def update(update, context):
+
+    pattern = '(".+")'
+    name = re.search(pattern, update.message.text)
+    if name:
+        nome = name.group(1)
+        _, tipo = update.message.text.split(nome)
+        chatid = update.message.chat_id
+
+        tipo = tipo.lower().strip()
+
+        grupo = grupo.Grupo(nome, chatid, tipo)
+        database.adicionar_grupo(grupo)
+        try:
+            link = context.bot.export_chat_invite_link(chat_id=chatid) 
+            mensagem = 'Grupo <a href="{}"> {} </a> adicionado com sucesso.'.format(link, nome)
+            context.bot.send_message(chat_id=chatid, 
+                                text=mensagem,
+                                parse_mode=telegram.ParseMode.HTML,
+                                disable_web_page_preview=True)
+        except Exception as exp:
+            context.bot.send_message(chat_id=chatid, 
+                                text="Um erro ocorreu, tente novamente mais tarde.",
+                                parse_mode=telegram.ParseMode.HTML,
+                                disable_web_page_preview=True)
+            print(exp)
+    else:
+        context.bot.send_message(chat_id=chatid, 
+                             text="Insira o nome do grupo entre \", por favor",
+                             parse_mode=telegram.ParseMode.HTML,
+                             disable_web_page_preview=True)
+
+    
 pass

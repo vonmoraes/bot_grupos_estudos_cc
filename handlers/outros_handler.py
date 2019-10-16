@@ -72,7 +72,7 @@ def inline_caps(update, context):
     if not query:
         return
     pass
-    results = list()
+    results = []
     results.append(
         InlineQueryResultArticle(
             id = query.upper(),
