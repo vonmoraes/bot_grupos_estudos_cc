@@ -36,20 +36,15 @@ group_list():
 def group_list(update, context):
 
     text_grupos_estudos = ("Lista de grupos de estudos:\n"
-    '<a href="https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg"> Álgebra Linear (AL) </a>\n'
-	'<a href="https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q"> Cálculo III </a>\n'
-    '<a href="https://t.me/joinchat/CIoz-hRPWS_bAOXEptVP5Q"> Computação Gráfica (CG) </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PE6mw8p-k9C1wzUdvQ"> Redes de Computadores II (REDES-II) </a>\n'
-	'<a href="https://t.me/joinchat/CIoz-lfkQXIwBPcwoee3-g"> Processamento de Imagens Digitais (PID) </a>\n'
-	'<a href="https://t.me/joinchat/CIoz-hZQxMd1JzjfZjRRLg"> Tópicos I/III </a>\n'
-	'<a href="https://t.me/joinchat/HQIiXRITL-Pg2UZaYMMQ3A"> Tópicos II/IV </a>\n'
-	'<a href="https://t.me/joinchat/HQIiXRFuRCYdoIetfodKSw"> Tópicos Virtual </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PEUFqPwQB3b3SeoLzQ"> TCC 1 </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PFScE-ROAHwJK0FcsA"> Compiladores </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PFcFdfzlT_sw0s8nEw"> Inteligência Artificial (IA) </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PEr1znSyU7dokXigGw"> Otimização de Sistemas (OS) </a>\n'
-	'<a href="https://t.me/joinchat/IEr6PFQ43feuPMbd_Mzkhg"> Lab. de Redes e S.O </a>\n'
-                          )
+        '<a href="https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg"> Álgebra Linear (AL) </a>\n'
+	    '<a href="https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q"> Cálculo III </a>\n'
+	    '<a href="https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ"> Compiladores </a>\n'
+	    '<a href="https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig"> Release Engineering  </a>\n'
+	    '<a href="https://t.me/joinchat/DbdJcBN6Dl_cYqVWSNBqSA"> Segurança e Auditoria de Sistemas </a>\n'
+	    '<a href="https://t.me/joinchat/DbdJcBAZKYbHscWnIw4JaA"> Computaçao Distribuída </a>\n'
+	    '<a href="https://t.me/joinchat/D0xe4lPO_i3KJN4hIdlFZg"> TCC 1 </a>\n'
+	    '<a href="https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug"> TCC 2 </a>\n'
+    )
     text_grupos_geral = ("Lista de outros grupos: \n"
         '<a href="https://t.me/joinchat/IEr6PEhoU9TdPmkaJli3GA"> Grupo de estudos </a>\n'
         '<a href="https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA"> Jogo do Lobinho </a> Venha se matar com a gente !\n'
