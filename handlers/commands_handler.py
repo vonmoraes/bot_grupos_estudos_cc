@@ -36,19 +36,6 @@ group_list():
 def group_list(update, context):
 
     text_grupos_estudos = ("Lista de grupos de estudos:\n"
-        '<a href="https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg"> Álgebra Linear (AL) </a>\n'
-	    '<a href="https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q"> Cálculo III </a>\n'
-	    '<a href="https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ"> Compiladores </a>\n'
-	    '<a href="https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig"> Release Engineering  </a>\n'
-	    '<a href="https://t.me/joinchat/DbdJcBN6Dl_cYqVWSNBqSA"> Segurança e Auditoria de Sistemas </a>\n'
-	    '<a href="https://t.me/joinchat/DbdJcBAZKYbHscWnIw4JaA"> Computação Distribuída </a>\n'
-        '<a href="https://t.me/joinchat/HJ7hGRRpKczWZENW3fk1Bg"> Modelagem e Avaliação de Desempenho </a>\n'  
-	    '<a href="https://t.me/joinchat/DbdJcBS0uSo6C-VQdpeD8w"> Topicos II </a>\n'
-	    '<a href="https://t.me/joinchat/D0xe4lPO_i3KJN4hIdlFZg"> TCC 1 </a>\n'
-	    '<a href="https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug"> TCC 2 </a>\n'
-    )
-
-    text_grupos_estudos_markdown = ("Lista de grupos de estudos:\n"
         "[Álgebra Linear](https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg)\n"
         "[Cálculo III](https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q)\n"
         "[Compiladores](https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ)\n"
@@ -61,18 +48,13 @@ def group_list(update, context):
         "[TCC 2](https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug)\n"
     )
 
-    text_grupos_geral_markdown = ("Lista de outros grupos: \n"
+    text_grupos_geral = ("Lista de outros grupos: \n"
         "[Grupo de Estudos](https://t.me/joinchat/IEr6PEhoU9TdPmkaJli3GA)\n"
         "[Jogo do Lobinho](https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA) venha se matar com a gente !\n"
     )
-
-    text_grupos_geral = ("Lista de outros grupos: \n"
-        '<a href="https://t.me/joinchat/IEr6PEhoU9TdPmkaJli3GA"> Grupo de estudos </a>\n'
-        '<a href="https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA"> Jogo do Lobinho </a> Venha se matar com a gente !\n'
-        )
-        
+  
     context.bot.send_message(chat_id = update.message.chat_id,
-        text = text_grupos_estudos_markdown + text_grupos_geral_markdown,
+        text = text_grupos_estudos + text_grupos_geral,
         parse_mode = telegram.ParseMode.MARKDOWN,
         disable_web_page_preview=True)
 pass
