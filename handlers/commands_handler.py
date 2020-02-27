@@ -30,7 +30,7 @@ pass
 """
 group_list():
     Retorna uma mensagem contendo a lista de grupos das máterias
-    & outros grupos da computação em formato HTML
+    & outros grupos da computação em formato Markdown
     comando :: /group_list
 """
 def group_list(update, context):
@@ -42,6 +42,8 @@ def group_list(update, context):
         "[Computação Distribuída](https://t.me/joinchat/DbdJcBAZKYbHscWnIw4JaA)\n"
         "[Modelagem e Avaliação de Desempenho](https://t.me/joinchat/HJ7hGRRpKczWZENW3fk1Bg)\n"
         "[Release Engineering](https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig)\n"
+        "[Redes de Computadores II](https://t.me/joinchat/PdOmS0RvlowETIEEfUu2QQ)\n"
+        "[Lab. de Redes e SO](https://t.me/joinchat/PdOmSxcG5_JWA4tmi_ea1w)\n"
         "[Segurança e Auditoria de Sistemas](https://t.me/joinchat/DbdJcBN6Dl_cYqVWSNBqSA)\n"
         "[Tópicos II](https://t.me/joinchat/DbdJcBS0uSo6C-VQdpeD8w)\n"
         "[TCC 1](https://t.me/joinchat/D0xe4lPO_i3KJN4hIdlFZg)\n"
@@ -102,7 +104,7 @@ def add_group(update, context):
     elif (update.message.chat.type == 'private'):
         try:
             comando, nome_grupo, link_grupo = update.message.text.split()
-            mensagem = '{} você quer adicionar o grupo <a href="{}"> {} </a>?.'.format(referencia_usuario,link_grupo,nome_grupo)
+            mensagem = '{} você quer adicionar o grupo <a href="{}"> {} </a>?.'.format(referencia_usuario, link_grupo, nome_grupo)
         except ValueError as identifier:
             mensagem = mensagem_instrucao
         pass
