@@ -36,26 +36,29 @@ group_list():
 def group_list(update, context):
 
     text_grupos_estudos = ("Lista de grupos de estudos:\n"
-        "[Álgebra Linear](https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg)\n"
+        # "[Álgebra Linear](https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg)\n"
         "[Cálculo III](https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q)\n"
         "[Compiladores](https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ)\n"
-        "[Computação Distribuída](https://t.me/joinchat/DbdJcBAZKYbHscWnIw4JaA)\n"
-        "[Computação Gráfica](https://t.me/joinchat/HJ7hGVPvD7y6vsOVgxAGDg)\n"
+        "[Filosofia 2](https://t.me/joinchat/DbdJcBv2oxoZONV-yGRLGA)\n"
+        #"[Computação Distribuída](https://t.me/joinchat/DbdJcBAZKYbHscWnIw4JaA)\n"
+        #"[Computação Gráfica](https://t.me/joinchat/HJ7hGVPvD7y6vsOVgxAGDg)\n"
         "[Inteligência Artificial](https://t.me/joinchat/D0xe4lcFdfw1tl0N5LNd2g)\n"
-        "[Modelagem e Avaliação de Desempenho](https://t.me/joinchat/HJ7hGRRpKczWZENW3fk1Bg)\n"
+        #"[Modelagem e Avaliação de Desempenho](https://t.me/joinchat/HJ7hGRRpKczWZENW3fk1Bg)\n"
         "[Otimização de Sistemas](https://t.me/joinchat/D0xe4kr1znQKAllm2PA84A)\n"
-        "[Redes de Computadores II](https://t.me/joinchat/PdOmS0RvlowETIEEfUu2QQ)\n"
-        "[Release Engineering](https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig)\n"
+        #"[Redes de Computadores II](https://t.me/joinchat/PdOmS0RvlowETIEEfUu2QQ)\n"
+        #"[Release Engineering](https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig)\n"
         "[Redes de Computadores II](https://t.me/joinchat/PdOmS0RvlowETIEEfUu2QQ)\n"
         "[Lab. de Redes e SO](https://t.me/joinchat/PdOmSxcG5_JWA4tmi_ea1w)\n"
         "[Segurança e Auditoria de Sistemas](https://t.me/joinchat/DbdJcBN6Dl_cYqVWSNBqSA)\n"
         "[Tópicos I - Ciência dos Dados](https://t.me/joinchat/D0xe4hWM3WNUtIb1Wk7qJg)\n"
-        "[Tópicos II - Machine Learning](https://t.me/joinchat/DbdJcBS0uSo6C-VQdpeD8w)\n"
-        "[TCC 1](https://t.me/joinchat/D0xe4lPO_i3KJN4hIdlFZg)\n"
-        "[TCC 2](https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug)\n"
+        #"[Tópicos II - Machine Learning](https://t.me/joinchat/DbdJcBS0uSo6C-VQdpeD8w)\n"
+        #"[TCC](https://t.me/joinchat/D0xe4lPO_i3KJN4hIdlFZg)\n"
+        "[Aplicações Híbridas](https://t.me/joinchat/CIoz-hpuIUK3c4HC_7YZHA)\n"
+        "[TCC](https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug)\n"
     )
 
     text_grupos_geral = ("Lista de outros grupos: \n"
+        "[Discord](https://discord.gg/6qS6vZT)\n"
         "[Grupo de Estudos](https://t.me/joinchat/IEr6PEhoU9TdPmkaJli3GA)\n"
         "[Jogo do Lobinho](https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA) venha se matar com a gente !\n"
     )
@@ -75,9 +78,9 @@ def ajuda(update, context):
     text_help = 'Informações sobre o bot em [github](https://github.com/vonmoraes/bot_grupos_estudos_cc).'
 
     context.bot.send_message(chat_id = update.message.chat_id,
-    text = text_help,
-    parse_mode = telegram.ParseMode.MARKDOWN,
-    disable_web_page_preview = True)
+        text = text_help,
+        parse_mode = telegram.ParseMode.MARKDOWN,
+        disable_web_page_preview = True)
 pass
 
 
