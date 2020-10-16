@@ -7,103 +7,63 @@ API: python-telegram-bot
 tutorial at. href<https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API>
 """
 
-"""
-As classes mais importantes da api são:
- * Updater
- * Dispatcher
- O updater continuamente busca novas atualizações do telegram 
- e as passa para o Dispatcher
-"""
+
 ####################
 # imports
 ####################
-import telegram
-import os
-from telegram.ext import *
-from handlers.commands_handler import *
-from handlers.outros_handler import *
 
-"""
-Log
-"""
+import telebot
+from telebot import types
+import os
+
+#Log
 import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-####################
-# global var
-####################
+bot = telebot.TeleBot(os.environ.get('BOT_TOKEN'))
 
-pucmg_cc_bot = os.environ.get('BOT_TOKEN')
-bot = telegram.Bot(token=pucmg_cc_bot)
-# Updater
-updater = Updater(token=pucmg_cc_bot, use_context=True)
-# Dispatcher
-dispatcher = updater.dispatcher
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, 'Sou um bot, por favor converse comigo! ;)')
+pass    
 
-####################
-# global func
-####################
-"""
-fill_outros_handler() : outros_handler.py
-    Adicona outras funções ao handler (manipulação de dados)
-    exemplo:
-    inline_caps_handler = InlineQueryHandler(inline_caps)
-"""
-def fill_outros_handler():
-    # inline caps
-    inline_caps_handler = InlineQueryHandler(inline_caps)
-    dispatcher.add_handler(inline_caps_handler)
-    # 
+@bot.message_handler(commands=['grupos'])
+def grupos(message):
+    text_grupos_estudos = ("Lista de grupos de estudos:\n"
+        # "[Álgebra Linear](https://t.me/joinchat/CIoz-gwgPwKC8g8i5-CzZg)\n"
+        "[Aplicações Híbridas](https://t.me/joinchat/CIoz-hpuIUK3c4HC_7YZHA)\n"
+        "[Cálculo III](https://t.me/joinchat/IqDW5RFkiJ9MMVD11AJ_-Q)\n"
+        "[Compiladores](https://t.me/joinchat/DbdJcFScE-QiB83OtVdmiQ)\n"
+        "[Filosofia 2](https://t.me/joinchat/DbdJcBv2oxoZONV-yGRLGA)\n"
+        "[Computação Distribuída](https://t.me/joinchat/DMDdalJhAFbGEu7d6SJeLA)\n"
+        #"[Computação Gráfica](https://t.me/joinchat/HJ7hGVPvD7y6vsOVgxAGDg)\n"
+        "[Inteligência Artificial](https://t.me/joinchat/D0xe4lcFdfw1tl0N5LNd2g)\n"
+        "[Modelagem e Avaliação de Desempenho](https://t.me/joinchat/DbdJcBvsBi8W8axMo4zZxQ)\n"
+        "[Otimização de Sistemas](https://t.me/joinchat/D0xe4kr1znQKAllm2PA84A)\n"
+        #"[Release Engineering](https://t.me/joinchat/DbdJcBRZvaq3xXs1mFn9ig)\n"
+        "[Redes de Computadores II](https://t.me/joinchat/PdOmS0RvlowETIEEfUu2QQ)\n"
+        "[Lab. de Redes e SO](https://t.me/joinchat/PdOmSxcG5_JWA4tmi_ea1w)\n"
+        "[Segurança e Auditoria de Sistemas](https://t.me/joinchat/HQIiXVeXLuTKm30snm_aXw)\n"
+        "[Tópicos I/III](https://t.me/joinchat/DbdJcBO1QMm3gG38IQcHpg)\n"
+        "[Processamento de Imagens Digitais](https://t.me/joinchat/DMDdalfkQXKcqnetLH1ZpQ)\n"
+        "[Estatística](https://t.me/joinchat/DbdJcBuOcvRr-rep6eX9Zg)\n"
+        "[TCC](https://t.me/joinchat/HQIiXUUFqPwTLlWoc-V2ug)\n"
+    )
+
+    text_grupos_geral = ("Lista de outros grupos: \n"
+        "[Discord](https://discord.gg/6qS6vZT)\n"
+        "[Grupo de Estudos](https://t.me/joinchat/IEr6PEhoU9TdPmkaJli3GA)\n"
+        "[Jogo do Lobinho](https://t.me/joinchat/IEr6PESXH6aDuWon4j3CoA) venha se matar com a gente !\n"
+    )
+
+    bot.send_message(message.chat.id, (text_grupos_estudos + text_grupos_geral), parse_mode="markdown")
+pass    
+
+@bot.message_handler(commands=['ajuda'])    
+def ajuda(message):
+    text_help = 'Informações sobre o bot em [github](https://github.com/vonmoraes/bot_grupos_estudos_cc).'
+    bot.send_message(message.chat.id, text_help, parse_mode="markdown")
 pass
 
-"""
-fill_command_handler(): commands_handler.py
-    Adiciona os comandos ao handler (manipulação de dados)
-    exemplo:
-        comando_handler = CommandHandler('comando', funcao)
-        # Adiciona 'comando' ao handler
-"""
-def fill_command_handler():
-    # /start
-    start_handler = CommandHandler('start', start)
-    dispatcher.add_handler(start_handler)
-    """
-        Grupo de estudos bot
-    """
-    # /group_list
-    group_list_handler = CommandHandler('group_list', group_list)
-    dispatcher.add_handler(group_list_handler)
-    # /help
-    help_handler = CommandHandler('help', ajuda)
-    dispatcher.add_handler(help_handler)
-
-    """
-    Nao foram adicionadas.
-    """
-    # /add_group
-    add_group_handler = CommandHandler('add_group', add_group)
-    dispatcher.add_handler(add_group_handler)
-    # /delete_group
-    # /edit_group
-pass
-
-####################
-# main
-####################
-def main():
-    # Verifica o funcionamento do bot retornando id e username 
-    print(bot.get_me())
-    # Adicionar comandos
-    fill_command_handler()
-    fill_outros_handler()
-    # Inicializa o servidor 
-    updater.start_polling()
-
-    # Parar o servidor
-    updater.idle()
-    updater.stop()
-pass
-
-main()
+bot.polling()
