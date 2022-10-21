@@ -25,7 +25,7 @@ bot = telebot.TeleBot(os.environ.get('BOT_TOKEN'))
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Sou um bot, por favor converse comigo! ;)')
+    bot.send_message(message.chat.id, 'Infelizmente o bot não está mais sendo atualizado. Caso queira ver o histórico de grupos antigos utilize o comando grupos')
 pass    
 
 @bot.message_handler(commands=['grupos'])
@@ -65,5 +65,10 @@ def ajuda(message):
     text_help = 'Informações sobre o bot em [github](https://github.com/vonmoraes/bot_grupos_estudos_cc).'
     bot.send_message(message.chat.id, text_help, parse_mode="markdown")
 pass
+
+# Command to ping to see if the bot is running 
+@bot.message_handler(commands=["ping"])
+def on_ping(message):
+    bot.reply_to(message, "Pong! O bot ta on!")
 
 bot.polling()
